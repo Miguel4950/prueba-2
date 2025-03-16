@@ -380,13 +380,13 @@ GROUP BY EXTRACT(YEAR FROM fecha)
 
 
 -- 2. Valor total de los préstamos de un año, mes para los bancos
-CREATE OR REPLACE VIEW vw_total_prestamos_banco_ano_mes AS*******************************************
+CREATE OR REPLACE VIEW vw_total_prestamos_banco_ano_mes AS*******************************************Create or replace no me convense
 SELECT b.nombre AS banco,
        EXTRACT(YEAR FROM p.fecha) AS anio,
        EXTRACT(MONTH FROM p.fecha) AS mes,
        SUM(p.valor_otorgado) AS totalprestamos
 FROM prestamo p
-INNER JOIN banco b ON p.idbanco = b.id*******************************************
+INNER JOIN banco b ON p.idbanco = b.id******************************************* solo JOIN
 GROUP BY b.nombre, EXTRACT(YEAR FROM p.fecha), EXTRACT(MONTH FROM p.fecha)
 
 
@@ -457,8 +457,8 @@ FROM (
          ) AS promedio_general
   FROM prestamo p1
   GROUP BY idbanco, EXTRACT(YEAR FROM fecha)
-) t  **************************************************************************************
-INNER JOIN banco b ON t.idbanco = b.id**************************************************************************************
+) t  ************************************************************************************** una t???????
+INNER JOIN banco b ON t.idbanco = b.id**************************************************************************************solo join
 WHERE t.promedio_banco > t.promedio_general;
 
 FALTA EL 9????????????????????????
