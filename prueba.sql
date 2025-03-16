@@ -5,7 +5,7 @@ Hola CHat
 --Creacion de tablas
 CREATE TABLE banco (
   id NUMBER(10,0) GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  nombre VARCHAR2(100) NOT NULL UNIQUE -- Se mantiene la unicidad sin CONSTRAINT
+  nombre VARCHAR2(100) NOT NULL UNIQUE -- Se mantiene la unicidad sin CONSTRAINT *******************************************
 );
 
 CREATE TABLE deudor (
@@ -14,7 +14,7 @@ CREATE TABLE deudor (
   tipo_doc VARCHAR2(20) NOT NULL,
   numero_doc VARCHAR2(20) NOT NULL,
   genero CHAR(1) NOT NULL,
-  UNIQUE (tipo_doc, numero_doc) -- Se mantiene la clave natural sin CONSTRAINT
+  UNIQUE (tipo_doc, numero_doc) -- Se mantiene la clave natural sin CONSTRAINT*******************************************
 );
 
 CREATE TABLE prestamo (
@@ -24,9 +24,9 @@ CREATE TABLE prestamo (
   fecha DATE DEFAULT SYSDATE NOT NULL,
   valor_otorgado NUMBER(10,2) DEFAULT 0 NOT NULL,
   pagado VARCHAR2(2) DEFAULT 'no' NOT NULL,
-  FOREIGN KEY (iddeudor) REFERENCES deudor(id), -- Se mantiene la relación sin CONSTRAINT
-  FOREIGN KEY (idbanco) REFERENCES banco(id), -- Se mantiene la relación sin CONSTRAINT
-  UNIQUE (idbanco, iddeudor, fecha) -- Se mantiene la unicidad sin CONSTRAINT
+  FOREIGN KEY (iddeudor) REFERENCES deudor(id), -- Se mantiene la relación sin CONSTRAINT*******************************************
+  FOREIGN KEY (idbanco) REFERENCES banco(id), -- Se mantiene la relación sin CONSTRAINT*******************************************
+  UNIQUE (idbanco, iddeudor, fecha) -- Se mantiene la unicidad sin CONSTRAINT*******************************************
 );
 
 CREATE TABLE abono (
@@ -34,8 +34,8 @@ CREATE TABLE abono (
   idprestamo NUMBER(10,0) NOT NULL,
   fecha DATE NOT NULL,
   valor_abono NUMBER(10,2) NOT NULL,
-  FOREIGN KEY (idprestamo) REFERENCES prestamo(id), -- Se mantiene la relación sin CONSTRAINT
-  UNIQUE (idprestamo, fecha) -- Se mantiene la unicidad sin CONSTRAINT
+  FOREIGN KEY (idprestamo) REFERENCES prestamo(id), -- Se mantiene la relación sin CONSTRAINT*******************************************
+  UNIQUE (idprestamo, fecha) -- Se mantiene la unicidad sin CONSTRAINT*******************************************
 );
 
 --Insertar Bancos
@@ -380,13 +380,13 @@ GROUP BY EXTRACT(YEAR FROM fecha)
 
 
 -- 2. Valor total de los préstamos de un año, mes para los bancos
-CREATE OR REPLACE VIEW vw_total_prestamos_banco_ano_mes AS
+CREATE OR REPLACE VIEW vw_total_prestamos_banco_ano_mes AS*******************************************
 SELECT b.nombre AS banco,
        EXTRACT(YEAR FROM p.fecha) AS anio,
        EXTRACT(MONTH FROM p.fecha) AS mes,
        SUM(p.valor_otorgado) AS totalprestamos
 FROM prestamo p
-INNER JOIN banco b ON p.idbanco = b.id
+INNER JOIN banco b ON p.idbanco = b.id*******************************************
 GROUP BY b.nombre, EXTRACT(YEAR FROM p.fecha), EXTRACT(MONTH FROM p.fecha)
 
 
@@ -415,7 +415,7 @@ JOIN banco b ON p.idbanco = b.id
 ORDER BY d.tipo_doc, d.numero_doc
 
 -- 5. Cantidad de prestamos por deudor
-CREATE OR REPLACE VIEW vw_prestamos_por_deudor AS
+CREATE OR REPLACE VIEW vw_prestamos_por_deudor AS*******************************************
 SELECT d.nombre AS deudor,
 NVL(COUNT(p.id),0) AS totalprestamos
 FROM deudor d
@@ -457,10 +457,11 @@ FROM (
          ) AS promedio_general
   FROM prestamo p1
   GROUP BY idbanco, EXTRACT(YEAR FROM fecha)
-) t
-INNER JOIN banco b ON t.idbanco = b.id
+) t  **************************************************************************************
+INNER JOIN banco b ON t.idbanco = b.id**************************************************************************************
 WHERE t.promedio_banco > t.promedio_general;
 
+FALTA EL 9????????????????????????
 
 -- 10. Tabla que muestra el valor total de préstamos por año, mes y género del deudor
 CREATE VIEW vw_totales_por_ano_mes_genero AS
@@ -479,7 +480,7 @@ FROM (
 )
 GROUP BY ROLLUP(ano, mes);
 
--- 9.Udatear los datos
+-- 9.Udatear los datos************************************************************************************** ESTE EL EL 9? Y ES LEGAL EL UPDATE Y SET?
 UPDATE prestamo p
 SET pagado = 'si'
 WHERE valor_otorgado <= (
