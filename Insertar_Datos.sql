@@ -329,4 +329,4 @@ INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (96, TO_DATE('2015-03-
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (97, TO_DATE('2011-09-03','YYYY-MM-DD'), 4893272);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (98, TO_DATE('2017-04-14','YYYY-MM-DD'), 3172839);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (99, TO_DATE('2012-09-26','YYYY-MM-DD'), 3947161);
-INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (100, TO_DATE('2014-06-10','YYYY-MM-DD'), 3228395;
+INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (100, TO_DATE('2014-06-10','YYYY-MM-DD'), 3228395);
