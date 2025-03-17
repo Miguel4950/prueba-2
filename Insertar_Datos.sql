@@ -243,7 +243,7 @@ INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (10, TO_DATE('2023-12-
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (11, TO_DATE('2012-05-15','YYYY-MM-DD'), 3447161);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (12, TO_DATE('2014-07-24','YYYY-MM-DD'), 4777161);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (13, TO_DATE('2016-08-13','YYYY-MM-DD'), 2617284);
-INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (14, TO_DATE('2022-10-35','YYYY-MM-DD'), 3228395);
+INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (14, TO_DATE('2022-10-31','YYYY-MM-DD'), 3228395);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (15, TO_DATE('2013-11-16','YYYY-MM-DD'), 3945062);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (16, TO_DATE('2011-02-04','YYYY-MM-DD'), 2561728);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (17, TO_DATE('2017-07-19','YYYY-MM-DD'), 4893272);
@@ -320,7 +320,7 @@ INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (87, TO_DATE('2017-10-
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (88, TO_DATE('2010-07-22','YYYY-MM-DD'), 4728395);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (89, TO_DATE('2015-03-11','YYYY-MM-DD'), 3394506);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (90, TO_DATE('2012-04-07','YYYY-MM-DD'), 3561728);
-INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (91, TO_DATE('2014-11-31','YYYY-MM-DD'), 4172839);
+INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (91, TO_DATE('2014-11-30','YYYY-MM-DD'), 4172839);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (92, TO_DATE('2016-03-16','YYYY-MM-DD'), 4617284);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (93, TO_DATE('2010-12-23','YYYY-MM-DD'), 3228395);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (94, TO_DATE('2021-01-02','YYYY-MM-DD'), 3445062);
