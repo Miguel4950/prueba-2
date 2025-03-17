@@ -370,7 +370,7 @@ INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (100, TO_DATE('2014-06
 
 
 -- 1. Valor total de préstamos por año
-CREATE VIEW vw_total_prestamos_por_ano AS
+CREATE VIEW Punto_1 AS
 SELECT EXTRACT(YEAR FROM fecha) AS ano,
        SUM(valor_otorgado) AS total_prestamos
 FROM prestamo
@@ -378,7 +378,7 @@ GROUP BY EXTRACT(YEAR FROM fecha)
 
 
 -- 2. Valor total de los préstamos de un año, mes para los bancos
-CREATE  VIEW vw_total_prestamos_banco_ano_mes AS
+CREATE  VIEW Punto_2 AS
 SELECT b.nombre AS banco,
        EXTRACT(YEAR FROM p.fecha) AS anio,
        EXTRACT(MONTH FROM p.fecha) AS mes,
@@ -389,7 +389,7 @@ GROUP BY b.nombre, EXTRACT(YEAR FROM p.fecha), EXTRACT(MONTH FROM p.fecha)
 
 
 -- 3. Saldo de cada prEstamo
-CREATE  VIEW vw_saldo_prestamo AS
+CREATE  VIEW Punto_3 AS
 SELECT p.id AS idprestamo,
        d.nombre AS deudor,
        p.valor_otorgado,
@@ -401,7 +401,7 @@ LEFT JOIN abono a ON p.id = a.idprestamo
 GROUP BY p.id, d.nombre, p.valor_otorgado
 
 -- 4. nombre y cédula del deudor, banco, fecha y valor del préstamo
-CREATE VIEW vw_listado_detallado AS
+CREATE VIEW Punto_4 AS
 SELECT d.nombre AS deudor,
        d.numero_doc AS cedula,
        b.nombre AS banco,
@@ -413,7 +413,7 @@ JOIN banco b ON p.idbanco = b.id
 ORDER BY d.tipo_doc, d.numero_doc
 
 -- 5. Cantidad de prestamos por deudor
-CREATE VIEW vw_prestamos_por_deudor AS
+CREATE VIEW Punto_5 AS
 SELECT d.nombre AS deudor,
 NVL(COUNT(p.id),0) AS totalprestamos
 FROM deudor d
@@ -421,14 +421,14 @@ LEFT JOIN prestamo p ON d.id = p.iddeudor
 GROUP BY d.nombre
 
 -- 6. Total de prestamos por año con fila extra de totales 
-CREATE VIEW vw_total_prestamos_ano_con_totales AS
+CREATE VIEW Punto_6 AS
 SELECT NVL(TO_CHAR(EXTRACT(YEAR FROM fecha)), 'Total') AS ano,
        SUM(valor_otorgado) AS total_prestamos
 FROM prestamo
 GROUP BY ROLLUP(EXTRACT(YEAR FROM fecha))
 
 -- 7. Deudor que ha tenido prestamos en todos los bancos existentes
-CREATE VIEW vw_deudor_todos_bancos AS
+CREATE VIEW Punto_7 AS
 SELECT d.nombre AS deudor
 FROM deudor d
 JOIN prestamo p ON d.id = p.iddeudor
@@ -440,7 +440,7 @@ FROM banco
 
 -- 8. Bancos con promedio de prestamos por año mayor al promedio general 
 
-CREATE VIEW vw_bancos_promedio_anual AS
+CREATE VIEW Punto_8 AS
 SELECT b.nombre AS banco,
        t.ano,
        t.promedio_general,
@@ -461,7 +461,7 @@ WHERE t.promedio_banco > t.promedio_general;
 
 
 -- 10. Tabla que muestra el valor total de préstamos por año, mes y género del deudor
-CREATE VIEW vw_totales_por_ano_mes_genero AS
+CREATE VIEW Punto_10 AS
 SELECT NVL(TO_CHAR(ano), 'Totales') AS ano,
        NVL(TO_CHAR(mes, 'FM00'), 'Totales') AS mes,
        SUM(CASE WHEN genero = 'F' THEN valor_otorgado ELSE 0 END) AS femenino,
@@ -486,6 +486,26 @@ WHERE valor_otorgado <= (
   WHERE a.idprestamo = p.id
 );
 
+
+
+
+-- Eliminar vistas
+DROP VIEW Punto_1;
+DROP VIEW Punto_2;
+DROP VIEW Punto_3;
+DROP VIEW Punto_4;
+DROP VIEW Punto_5;
+DROP VIEW Punto_6;
+DROP VIEW Punto_7;
+DROP VIEW Punto_8;
+DROP VIEW Punto_10;
+
+-- Eliminar tablas
+DROP TABLE abono;
+DROP TABLE prestamo;
+DROP TABLE deudor;
+DROP TABLE banco;
+```
 
 */
 
