@@ -233,7 +233,7 @@ INSERT INTO prestamo (iddeudor, idbanco, fecha, valor_otorgado) VALUES (5, 5, TO
 --100 ABONOS PARA LOS PRIMEROS 100 PRESTAMOS
 
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (1, TO_DATE('2017-03-19','YYYY-MM-DD'), 3679211);
-INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (2, TO_DATE('2013-11-27','YYYY-MM-DD'), 4622844);
+INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (2, TO_DATE('2013-11-27','YYYY-MM-DD'), 9245687);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (3, TO_DATE('2015-06-10','YYYY-MM-DD'), 2916074);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (4, TO_DATE('2020-01-04','YYYY-MM-DD'), 3289472);
 INSERT INTO abono (idprestamo, fecha, valor_abono) VALUES (5, TO_DATE('2011-09-20','YYYY-MM-DD'), 4361705);
